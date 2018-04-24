@@ -1,3 +1,5 @@
+import style from '../dist/css/app.css';
+
 import { person, sayHello } from './lib'
 
 let test = () => 

@@ -16,7 +16,29 @@ module.exports = {
             query: {
                 presets: ['env']
             }
-        }]
+        },
+        {
+            test: /\.scss$/,
+            use: [{
+                loader: "style-loader"
+            }, {
+                loader: "css-loader"
+            }, {
+                loader: "sass-loader",
+                options: {
+                    includePaths: ["./src/sass"]
+                }
+            },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
+            }]
+        },
+        {
+            test: /\.css$/,
+            use: ['style-loader', 'css-loader']
+        }
+        ]
     },
     mode: 'development'
 }
