@@ -1,0 +1,49 @@
+https://www.youtube.com/watch?v=iWUR04B42Hc&t=1s
+
+for those watching in 2018, Brad is using webpack 3.8.1 in this video, current version is 4.1.1, that comes with webpack-cli beeing its own npm package, and a few changes in webpack.config.js:
+1- change "loaders", to "rules" https://stackoverflow.com/questions/49203841/webpack-4-1-1-configuration-module-has-an-unknown-property-loaders
+2- I did not figure out the reason for this working, but remove query field from loaders object in config, if you leave it you will get ELIFECYCLE error msg and no build folder 
+3- as it is said in console msg, when using webpack-dev-server put your .html file in dist folder, or it wont work
+
+as for polyfills https://babeljs.io/docs/usage/polyfill/
+
+
+npm init
+npm install --save-dev webpack 
+webpack-dev-server 
+babel-core 
+babel-loader 
+babel-preset-env
+npm install --save-dev babel-polyfill
+
+
+Edit package.json and add line below:
+"scripts":{
+    "build": "webpack"
+}
+
+Add webpack.config.js and write as an existing file
+in this project.
+
+
+
+const path = require('path');
+
+module.exports = {
+  entry: './src/index.1.js',
+  mode: 'development',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js'
+  },
+  devServer: {
+    contentBase: path.join(__dirname, "dist"),
+    compress: true,
+    port: 9000
+  },
+  watch:true
+};
+
+---------------
+ npm run build
+ npm start
