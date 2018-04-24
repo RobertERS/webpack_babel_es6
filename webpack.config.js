@@ -9,35 +9,11 @@ module.exports = {
         filename: 'app.bundle.js'
     },
     module: {
-        rules: [{
-            test: /\.js?$/,
-            exclude: /node_modules/,
-            loader: 'babel-loader',
-            query: {
-                presets: ['env']
-            }
-        },
-        {
-            test: /\.scss$/,
-            use: [{
-                loader: "style-loader"
-            }, {
-                loader: "css-loader"
-            }, {
-                loader: "sass-loader",
-                options: {
-                    includePaths: ["./src/sass"]
-                }
-            },
+        rules: [
             {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader']
-            }]
-        },
-        {
-            test: /\.css$/,
-            use: ['style-loader', 'css-loader']
-        }
+            }
         ]
     },
     mode: 'development'
